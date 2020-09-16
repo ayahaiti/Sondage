@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/accueil.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src='./js/modes_de_transport_category.js'></script>
+</head>
+<body onload="registerTheUser();">
+	<div class="w3-bar w3-black">
+		<a href="" class="w3-bar-item w3-button">Transport</a>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="panel-heading">
+			<h2>Les modes de transport</h2>
+		</div>
+		<div class="panel-body">
+			<p>Dans cette premi&egrave;re partie, on ne s'int&eacute;ressera
+				qu'aux entit&eacute;s ayant un lien avec les modes de transport.</p>
+			<br />
+			<p style="font-weight: bold; display: inline-block;">Exemple :</p>
+			<p style="display: inline-block;">&nbsp&nbsp Prendre le bus</p>
+			<br />
+			<br />
+			<br />
+			<br />
+			<button id="fin" class="btn btn-primary center-block"
+				onclick="startQuestions()">Questions des modes de transport</button>
+			<div id="questionnaire-message" class="message" style="color: red">
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+	<div id="questionnaire-message" class="message" style="color: red"></div>
+	</div>
+
+</body>
+</html>

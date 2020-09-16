@@ -1,0 +1,13 @@
+body {
+	background-color: #DCDCDC;
+}
+.panel-body {
+	background-color: #DCDCDC;
+}
+.panel-body p{
+	text-align: left;
+}
+.panel-heading h2{
+	text-align: center;
+	font-weight: bold;
+}

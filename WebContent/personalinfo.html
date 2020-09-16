@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/personalinfo.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="./js/personalinfo.js"></script>
+</head>
+<body>
+	<div class="w3-bar w3-black">
+		<a href="#" class="w3-bar-item w3-button">Informations
+			personnelles</a>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="panel-heading">
+			<h2 style="font-weight: bold;">Informations personnelles</h2>
+			<p style="display: inline"></p>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email:</label> <input type="email"
+					class="form-control" id="exampleInputEmail1"
+					placeholder="Veuillez saisir votre email..">
+					<p style="display: inline; color: grey;">(facultatif)</p>
+				<!-- <p>*Si vous d&eacute;sirez retrouver vos r&eacute;sultats afin
+					de les comparer &agrave; ceux des autres personnes ayant
+					r&eacute;pondu &agrave; ce sondage, veuillez entrer votre adresse
+					mail dans le champs ci-dessus.</p> -->
+			</div>
+			<div>
+				<label for="exampleInputProfession">Profession:</label>
+				<p style="display: inline; color: grey;">(facultatif)</p>
+				<br /> <input id="professionid" class="form-control" type="text"
+					placeholder="Veuillez saisir votre profession.."> <br />
+			</div>
+			<label for="exampleInputExpert">Expert:</label>
+			<p style="display: inline; color: grey;">(facultatif)</p>
+			<br />
+			<div class="btn-group6" role="group">
+				<button id="mobilite" type="button" class="btn btn-default">Un de mes sujets d'&eacute;tude est la mobilit&eacute; des enfants</button>
+				<button id="tourisme" type="button" class="btn btn-default">Je travaille dans le domaine du tourisme</button><br/>
+				<button id="nonexpert" type="button" class="btn btn-default">Je ne suis pas un expert dans ces deux domaines</button>
+				<div id="expert-message" class="message" style="color: red"></div>
+			</div>
+			<br /> <label for="exampleInputGender">Sexe:</label>
+			<p style="display: inline; color: grey;">(facultatif)</p>
+			<br />
+			<div class="btn-group2" role="group">
+				<button type="button" class="btn btn-default" >Homme</button>
+				<button type="button" class="btn btn-default">Femme</button>
+				<div id="gender-message" class="message" style="color: red"></div>
+			</div>
+			<br /> <label for="exampleInputGender"> Groupe d'age:</label>
+			<p style="display: inline; color: grey;">(facultatif)</p>
+			<br />
+			<div class="btn-group3" role="group">
+				<button type="button" class="btn btn-default">Moins de 18</button>
+				<button type="button" class="btn btn-default">18-25</button>
+				<button type="button" class="btn btn-default">25-50</button>
+				<button type="button" class="btn btn-default">Plus de 50</button>
+				<div id="agegroup-message" class="message" style="color: red"></div>
+			</div>
+			<br />
+			<div id="error-message" class="message" style="color: red"></div>
+			<br />
+			<button id="start" onclick="checkInfo()"
+				class="btn btn-primary center-block">Valider mes
+				r&eacute;ponses</button>
+		</div>
+	</div>
+	<div class="col-sm-3"></div>
+	<script>
+		$(".btn-group6[role='group'] button").on('click', function() {
+			$(this).siblings().removeClass('active')
+			$(this).addClass('active');
+		});
+		$(".btn-group2[role='group'] button").on('click', function() {
+			$(this).siblings().removeClass('active')
+			$(this).addClass('active');
+		});
+		$(".btn-group3[role='group'] button").on('click', function() {
+			$(this).siblings().removeClass('active')
+			$(this).addClass('active');
+		});
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+</body>
+</html>

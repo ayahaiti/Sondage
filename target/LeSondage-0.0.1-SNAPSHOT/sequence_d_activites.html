@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/accueil.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="w3-bar w3-black">
+		<a href="" class="w3-bar-item w3-button">S&eacute;quences</a>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="panel-heading">
+			<h2>Les s&eacute;quences d'activit&eacute;s.</h2>
+		</div>
+		<div class="panel-body">
+			<p>Dans cette dernière partie, on ne s'int&eacute;ressera qu'aux
+				entit&eacute;s de type s&eacute;quence d'activit&eacute;s.</p>
+			<br />
+			<p style="font-weight: bold; display: inline-block;">Exemple :</p>
+			<p style="display: inline-block;">&nbsp&nbsp Travailler, Faire
+				ses courses, Cuisiner;</p>
+			<br />
+			<p style="display: inline-block; font-weight: bold; color: #006dcc;">
+				<br /> Ce qui est &eacute;quivalent à:
+			</p>
+			<p style="display: inline-block;">Travailler ensuite faire ses
+				courses puis rentrer cuisiner.</p>
+			<br /> <br /> <br /> <br />
+			<button id="fin" class="btn btn-primary center-block"
+				onclick="startQuestions()">Questions s&eacute;quences
+				d'activit&eacute;s</button>
+		</div>
+	</div>
+	<div class="col-sm-3">
+	<div id="index-message" class="message" style="color: red"></div>
+	</div>
+	<script>
+		var count = 0;
+		window.onload = function() {
+			if (typeof history.pushState === "function") {
+				history.pushState("back", null, null);
+				window.onpopstate = function() {
+					history.pushState('back', null, null);
+					if (count == 1) {
+						var url = document.URL;
+						url = url.replace(/\/[^\/]*$/,
+								'/sequence_d_activites.html');
+						location.replace(url);
+					}
+				};
+			}
+		};
+		setTimeout(function() {
+			count = 1;
+		}, 200);
+		function encryptString(text) {
+			var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
+			var encrypted = CryptoJS.AES.encrypt(text, password);
+			return encrypted;
+		}
+		var a = $
+				.ajax({
+					type : "GET",
+					url : document.URL.replace(/\/[^\/]*$/,
+							"/rest/user/questionsequence"),
+					dataType : "json",
+					success : function(response) {
+							var encryptedresponse = encryptString(JSON
+									.stringify(response));
+							localStorage.setItem('questionsequence',
+									encryptedresponse);
+					},
+					error : function() {
+						document.getElementById('index-message').innerHTML = " Something went wrong.";
+					}
+				});
+		function startQuestions() {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/questions_sequence.html');
+			location.replace(url);
+		}
+	</script>
+</body>
+</html>

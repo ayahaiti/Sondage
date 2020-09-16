@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/personalinfo.css">
+<link rel="stylesheet" type="text/css" href="css/choixDuQuestionnaire.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="./js/choixDuQuestionnaire.js"></script>
+</head>
+<body>
+	<div class="w3-bar w3-black">
+		<a href="./index.html" class="w3-bar-item w3-button">Accueil</a>
+	</div>
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="panel-body">
+			&nbsp; &nbsp; &nbsp; &nbsp;
+			<p style="font-size: 160%; font-weight: bold;">&nbsp; &nbsp;
+				&nbsp; &nbsp;Veuillez choisir un questionnaire:
+			<p>
+				<br /> <br /> <br />
+			<div class="btn-group1" role="group">
+				<div class="e">
+					<button style="display: inline" type="button" id="boutonenfants"
+						class="btn btn-default" data-toggle="tooltip"
+						onclick="activateenfants()">Enfants</button>
+					<div class="arrow-up"></div>
+					<p>
+						<i>Ce questionnaire contient 15 questions li&eacute;es au
+							projet Mobi'Kids. Celui-ci s'int&eacute;resse aux
+							diff&eacute;rents choix de mobilit&eacute; et des
+							exp&eacute;riences spatiales des enfants en phase
+							d&apos;apprentissage.</i>
+					</p>
+				</div>
+				<div class="t">
+					<button style="display: inline" type="button" id="boutontouriste"
+						class="btn btn-default" data-toggle="tooltip"
+						onclick="activatetouristes()">Touristes</button>
+					<div class="arrow-up"></div>
+					<p>
+						<i>Ce questionnaire contient 18 questions li&eacute;es au
+							projet Smart Loire. Celui-ci vise &agrave; offrir
+							diff&eacute;rents services web aux touristes pour une meilleure
+							organisation de s&eacute;jours de tourisme culturel dans la
+							r&eacute;gion Val de Loire.</i>
+					</p>
+				</div>
+			</div>
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<div id="questionnaire-message" class="message" style="color: red">
+			</div>
+			<button id="start" onclick="checkInfo()"
+				class="btn btn-primary center-block">Commencer le
+				questionnaire</button>
+		</div>
+	</div>
+	<div class="col-sm-2"></div>
+</body>
+</html>

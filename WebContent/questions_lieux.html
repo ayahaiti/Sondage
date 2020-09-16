@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/question.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src='./js/questions.js'></script>
+</head>
+<body>
+	<div class="w3-bar w3-black">
+		<a href="#" class="w3-bar-item w3-button" style="font-weight: bold;">Question
+			&nbsp
+			<p id='number' style="display: inline;">0</p>
+			<p style="display: inline;">/</p>
+			<p id="numquestions" style="display: inline;">18</p>
+		</a>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<div class="panel-heading">
+			<p
+				style="font-weight: bold; display: inline; text-decoration: underline;">Question
+				&nbsp Lieux &nbsp</p>
+			<p id='numberOfQuestion'
+				style="text-decoration: underline; font-weight: bold; display: inline;">0</p>
+			<p id='categoryQuestion'
+				style="text-decoration: underline; font-weight: bold; display: inline;"></p>
+			<br />
+			<br /> <br />
+			<br />
+			<h4 style="font-weight: bold; text-align: center;">Veuillez
+				d&eacute;terminer un degr&eacute; de ressemblance:</h4>
+			&nbsp
+		</div>
+		<div class="panel-body">
+			<h4 style="display: inline" id='question'></h4>
+			<h4 style="display: inline" class="demoo" id='demo'></h4>
+			<br /> <br />
+			<h5 style="font-weight: bold;">S&eacute;l&eacute;ctionnez votre
+				degr&eacute; de ressemblance:</h5>
+			<div class="slidecontainer">
+				<p style="display: inline;" class="pull-left">0%</p>
+				<p style="display: inline;" class="pull-right">100%</p>
+				<input style="display: inline;" type="range" min="0" max="100"
+					value="50" class="slider" step='1' id='nombre' />
+			</div>
+
+			<br /> <br /> <br />
+			<button id="quessuiv" class="pull-right"
+				style="background-color: black; padding: 12px 28px; display: block; color: white; border-radius: 8px;"
+				onclick="getQuestionSuivante()">question suivante&rarr;</button>
+
+			<button id="fin" class="pull-right"
+				style="display: none; background-color: black; padding: 12px 28px; display: block; color: white; border-radius: 8px;"
+				onclick="goToRemerciements()">Fin de la section&rarr;</button>
+		</div>
+		
+	</div>
+	<div class="col-sm-3">
+	<div id="index-message" class="message" style="color: red"></div>
+	</div>
+	<script>
+	function encryptString(text) {
+		var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
+		var encrypted = CryptoJS.AES.encrypt(text, password);
+		return encrypted;
+	}
+		var count = 0;
+		window.onload = function() {
+			if (typeof history.pushState === "function") {
+				history.pushState("back", null, null);
+				window.onpopstate = function() {
+					history.pushState('back', null, null);
+					if (count == 1) {
+						var url = document.URL;
+						url = url.replace(/\/[^\/]*$/, '/questions_lieux.html');
+						location.replace(url);
+					}
+				};
+			}
+		};
+		setTimeout(function() {
+			count = 1;
+		}, 200);
+		var degre_sim;
+		var arrayReponses = [];
+		function decryptString(text) {
+			var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
+			var decrypted = CryptoJS.AES.decrypt(text, password);
+			return decrypted.toString(CryptoJS.enc.Utf8);
+		}
+
+		var wewantodecrypt = localStorage.getItem("questionslieux");
+		if (wewantodecrypt == null) {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/arret.html');
+			location.replace(url);
+		}
+		var decryted = decryptString(wewantodecrypt);
+		var listeOfQuestions = JSON.parse(decryted);
+		const
+		tailleListe = listeOfQuestions.length;
+		$(document).ready(function() {
+			$("#quessuiv").trigger('click');
+		});
+		function goToNextPage() {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/remerciements.html');
+			location.replace(url);
+		}
+		function goToRemerciements() {
+			addAnswers(arrayReponses);
+			goToNextPage();
+			goToActivities();
+		}
+		function resetSlider() {
+			document.getElementById('nombre').value = 50;
+			document.getElementById('demo').innerHTML = " Un peu ressemblants(es) : 50 %";
+		}
+		function testEnd(i) {
+			var num = document.getElementById('number').innerHTML;
+			var t = parseInt(num);
+			if (t == i - 1) {
+				document.getElementById("fin").style.display = "block";
+				document.getElementById("quessuiv").style.display = "none";
+			} else {
+				document.getElementById("fin").style.display = "none";
+				document.getElementById("quessuiv").style.display = "block";
+			}
+		}
+		var slider = document.getElementById('nombre');
+		var output = document.getElementById('demo');
+		var message = 0;
+		output.innerHTML = ' Un peu ressemblants(es): 50 %';
+		slider.oninput = function() {
+			if (this.value < 20) {
+				message = (' Très différents(es)' + ': ' + this.value + ' %');
+			} else if (this.value < 40) {
+				message = (' Différents(es)' + ': ' + this.value + ' %');
+			} else if (this.value < 60) {
+				message = (' Un peu ressemblants(es)' + ': ' + this.value + ' %');
+			} else if (this.value < 80) {
+				message = (' Proche(s)' + ': ' + this.value + ' %');
+			} else if (this.value <= 100) {
+				message = (' Très proche(s)' + ': ' + this.value + ' %');
+			}
+			degre_sim = this.value;
+			output.innerHTML = (message);
+		}
+		function goToPreviousPage() {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/exemplequestion.html');
+			location.replace(url);
+		}
+		function goToActivities() {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/activites_category.html');
+			location.replace(url);
+		}
+		function getQuestionSuivante() {
+			if (degre_sim == null) {
+				degre_sim = 50;
+			}
+			if (listeOfQuestions == null) {
+				goToPreviousPage();
+			}
+			var num = document.getElementById('number').innerHTML;
+			var theId = parseInt(num);
+			testEnd(tailleListe);
+			var object = listeOfQuestions.shift();
+			var numOfQuestions;
+			var questionnaire = localStorage.getItem("questionnaire");
+			if (questionnaire == null) {
+				var url = document.URL;
+				url = url.replace(/\/[^\/]*$/, '/arret.html');
+				location.replace(url);
+			}
+			if (questionnaire == "Enfants") {
+				numOfQuestions = JSON.parse(decryptString(localStorage
+						.getItem("questionEnfantsForResults"))).length;
+			}
+			var questionEnfantsForResults=localStorage.getItem("questionEnfantsForResults");
+			if (questionEnfantsForResults == null) {
+				var url = document.URL;
+				url = url.replace(/\/[^\/]*$/, '/arret.html');
+				location.replace(url);
+			}
+			var questionTouristesForResults=localStorage.getItem("questionTouristesForResults");
+			if (questionTouristesForResults == "Touristes") {
+				numOfQuestions = JSON.parse(decryptString(localStorage
+						.getItem("questionTouristesForResults"))).length;
+			}
+			document.getElementById('number').innerHTML = theId + 1;
+			document.getElementById('numberOfQuestion').innerHTML = (theId + 1);
+			document.getElementById('categoryQuestion').innerHTML = "/"
+					+ tailleListe;
+			document.getElementById('question').innerHTML = object.question;
+			var id = localStorage.getItem("uids");
+			if (id == null) {
+				var url = document.URL;
+				url = url.replace(/\/[^\/]*$/, '/arret.html');
+				location.replace(url);
+			}
+			var unereponse = {
+				iduser : id,
+				idquestion : object.id,
+				degresimilarite : degre_sim
+			};
+			arrayReponses.push(unereponse);
+			resetSlider();
+			localStorage.setItem("newCategory", parseInt(num) + 1);
+		}
+	</script>
+</body>
+</html>

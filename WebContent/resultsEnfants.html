@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sondage</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/personalinfo.css">
+<link rel="stylesheet" type="text/css" href="css/resultsEnfants.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body onload="addAnswers();">
+	<div class="w3-bar w3-black">
+		<a href="./index.html" class="w3-bar-item w3-button">Accueil</a>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<br /> <br />
+		<h2 style="font-size: 200%; font-weight: bold;">R&eacute;sultats</h2>
+		<br /> <br /> <br /> <br />
+		<h5>Question 1</h5>
+		<p id="question1"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others1"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you1"></rect>
+			<text id="textOthers1" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou1" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 2</h5>
+		<p id="question2"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others2"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you2"></rect>
+			<text id="textOthers2" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou2" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 3</h5>
+		<p id="question3"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+		<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others3"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you3"></rect>
+			<text id="textOthers3" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou3" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 4</h5>
+		<p id="question4"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others4"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you4"></rect>
+			<text id="textOthers4" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou4" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 5</h5>
+		<p id="question5"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others5"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you5"></rect>
+			<text id="textOthers5" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou5" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 6</h5>
+		<p id="question6"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others6"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you6"></rect>
+			<text id="textOthers6" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou6" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 7</h5>
+		<p id="question7"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others7"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you7"></rect>
+			<text id="textOthers7" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou7" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 8</h5>
+		<p id="question8"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others8"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you8"></rect>
+			<text id="textOthers8" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou8" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 9</h5>
+		<p id="question9"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others9"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you9"></rect>
+			<text id="textOthers9" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou9" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 10</h5>
+		<p id="question10"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others10"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you10"></rect>
+			<text id="textOthers10" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou10" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 11</h5>
+		<p id="question11"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others11"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you11"></rect>
+			<text id="textOthers11" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou11" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 12</h5>
+		<p id="question12"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+		<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others12"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you12"></rect>
+			<text id="textOthers12" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou12" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 13</h5>
+		<p id="question13"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others13"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you13"></rect>
+			<text id="textOthers13" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou13" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 14</h5>
+		<p id="question14"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others14"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you14"></rect>
+			<text id="textOthers14" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou14" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<h5>Question 15</h5>
+		<p id="question15"></p>
+		<svg id="slider01" style="display: inline;" width="674.5" height="150">
+			<rect width="4" height="20" x="50" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="302" y="65" class="results-scale"></rect>
+			<rect width="500" height="10" x="54" y="70" class="results-scale"></rect>
+			<rect width="4" height="20" x="554" y="65" class="results-scale"></rect>
+			<rect width="4" height="20" x="330" y="65" class="others"
+				id="others15"></rect>
+			<rect width="4" height="20" x="250" y="65" class="you" id="you15"></rect>
+			<text id="textOthers15" x="310" y="50" style="font-weight: bold;"
+				fill="#0000CD">Autres</text>
+			<text id="textYou15" x="240" y="50" style="font-weight: bold;"
+				fill="#E85D0E">Vous</text>
+		</svg>
+		<br /> <br />
+		<button onclick="goToAcceuil()" class="btn btn-primary center-block">Terminer</button>
+		<br /> <br /> <br /> <br />
+	</div>
+	<div class="col-sm-3"></div>
+	<script type="text/javascript">
+	
+	function testTextsVousAndOthers(id) {
+		var element1 = document.getElementById("you" + id);
+		var element2 = document.getElementById("others" + id);
+		var el1 = document.getElementById("textYou"+id);
+		var ely1 = el1.getAttribute("y");
+		var element1y = element1.getAttribute("y");
+		var element2y = element2.getAttribute("y");
+		var you = element1.getAttribute("x");
+		var others = element2.getAttribute("x");
+		if (Math.abs(others-you)<=39) {
+			el1.setAttribute("y", ely1 - 20);
+		}
+	}
+	
+		function decryptString(text) {
+			var password = 'l5JmP+G0/1zB%;r8B8?2?2pcqGcL^3';
+			var decrypted = CryptoJS.AES.decrypt(text, password);
+			return decrypted.toString(CryptoJS.enc.Utf8);
+		}
+		var questionEnfantsForResults = localStorage.getItem("questionEnfantsForResults");
+		if (questionEnfantsForResults == null) {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/arret.html');
+			location.replace(url);
+		}
+		
+		var lesQuestions = JSON.parse(decryptString(localStorage
+				.getItem("questionEnfantsForResults")));
+		var i = 0;
+
+		for (i = 0; i < lesQuestions.length; i++) {
+			var uneQuestion = lesQuestions[i].question;
+			var id = "question" + (i + 1);
+			document.getElementById(id).innerHTML = uneQuestion;
+		}
+
+		function setYou(id, value) {
+			var element1 = document.getElementById("you" + id);
+			var element2 = document.getElementById("textYou" + id);
+			var ledegre = (504 * value) / 100;
+			element1.setAttribute("x", ledegre + 50);//value entre 50 et 554
+			element2.setAttribute("x", ledegre + 38);
+		}
+
+		function setOthers(id, value) {
+			var element1 = document.getElementById("others" + id);
+			var element2 = document.getElementById("textOthers" + id);
+			var ledegre = (504 * value) / 100;
+			element1.setAttribute("x", ledegre + 50);//value entre 50 et 554
+			element2.setAttribute("x", ledegre + 38);
+		}
+
+		
+		function addUsersAnswers() {
+			var questionsString = localStorage.getItem("degrees");
+			if (questionsString == null) {
+				var url = document.URL;
+				url = url.replace(/\/[^\/]*$/, '/arret.html');
+				location.replace(url);
+			}
+			var questionsString2 = decryptString(questionsString);
+			var theQuestions = JSON.parse(questionsString2);
+			var i;
+			for (i = 0; i < theQuestions.length; i++) {
+				var object = theQuestions[i];
+				var degre = object.degresimilarite;
+				var idu = object.iduser;
+				var idquestion = object.idquestion;
+				setYou(idquestion, degre);
+			}
+		}
+
+		function addOthersAnswers() {
+			var answers = localStorage.getItem("othersdegrees");
+			if (answers == null) {
+				var url = document.URL;
+				url = url.replace(/\/[^\/]*$/, '/arret.html');
+				location.replace(url);
+			}
+			var parsedAnswers = JSON.parse(decryptString(answers));
+			var i;
+			for (i = 0; i < parsedAnswers.length; i++) {
+				var object = parsedAnswers[i];
+				var degre = object.degresimilarite;
+				var idquestion = object.idquestion;
+				setOthers(idquestion, degre);
+				testTextsVousAndOthers(idquestion);
+			}
+		}
+
+		function addAnswers() {
+			addUsersAnswers();
+			addOthersAnswers();
+		}
+
+		function goToAcceuil() {
+			var url = document.URL;
+			url = url.replace(/\/[^\/]*$/, '/index.html');
+			location.replace(url);
+		}
+	</script>
+</body>
+</html>

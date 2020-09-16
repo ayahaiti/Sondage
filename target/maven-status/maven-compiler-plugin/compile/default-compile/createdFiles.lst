@@ -1,0 +1,9 @@
+org\sondage\beans\Reponse.class
+org\sondage\controller\impl\ControllerImpl.class
+org\sondage\webservices\Webservices.class
+org\sondage\beans\Question.class
+org\sondage\controller\Controller.class
+org\sondage\dao\Dao.class
+org\sondage\beans\User.class
+org\sondage\dao\impl\DaoImpl.class
+org\sondage\beans\DatabaseAccess.class

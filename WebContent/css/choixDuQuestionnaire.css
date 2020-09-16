@@ -1,0 +1,33 @@
+.e {
+	position: absolute;
+	right: 540px;
+	width: 220px;
+	height: 120px;
+}
+
+.e p {
+	border-radius: 0px;
+	background: black;
+	color: white;
+}
+
+.t p {
+	border-radius: 0px;
+	background: black;
+	color: white;
+}
+
+.t {
+	position: absolute;
+	right: 140px;
+	width: 220px;
+	height: 120px;
+}
+
+.arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid black;
+}

@@ -1,0 +1,15 @@
+body{
+	background-color: #DCDCDC;
+}
+.panel-body {
+	background-color: #DCDCDC;
+}
+.active{
+	color:grey;
+}
+#mobilite{
+	width: 340px;
+}
+#tourisme{
+	width: 270px;
+}

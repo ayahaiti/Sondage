@@ -1,0 +1,21 @@
+.results-scale {
+	fill: #808080;
+}
+.you {
+	fill: #E85D0E;
+}
+
+.others {
+	fill: #0000CD;
+}
+h2 {
+	margin-inline-start: 230px;
+}
+h5{
+	font-weight: bold;
+	display: block;
+	margin-block-start: 1.33em;
+	margin-block-end: 1.33em;
+	margin-inline-start: 250px;
+	margin-inline-end: 10px;
+}
